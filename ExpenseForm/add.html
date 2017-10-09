@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .back{
+        font-size:16px;
+        }
+
+        .back:hover{
+        text-decoration: none;
+        color: white;
+        }
+    </style>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'> 
+    <link href="bootstrap.css" rel="stylesheet">
+    <link href="animate.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>	
+</head>
+<body class="">
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Expense Update</button>
+<div id="myModal" class="modal fade">
+<div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+<div class="loginColumns animated fadeInDown">
+    <div class="row">
+
+        <div class="col-md-12">
+            <p class = "logintext2">Add your Expense</p>
+        </div>
+        <div class="col-md-12">
+            <div class="wrappingbox">
+				  <!-- <div class="card"> -->
+				    <form>
+				      <div class="input-container">
+				        <input type="#{type}" id="#{label}" required="required"/>
+				        <label for="#{label}">Enter The Description</label>
+				        <div class="bar"></div>
+				      </div>
+				      <div class="input-container">
+				        <input type="#{type}" id="#{label}" required="required"/>
+				        <label for="#{label}">Enter The Amount</label>
+				        <div class="bar"></div>
+				      </div>
+				      	
+				      	
+				      	<!-- <div class="datediv">
+				        <label for="#{label}">3. </label>
+				       </div> -->
+				       
+				        <div class="datedivsib">
+			            <div class="container">
+					    <div class="row">
+					        <div class='col-sm-4'>
+					            <div class="form-group">
+					                <div class='input-group date' id='datetimepicker1'>
+					                    <input type='text' placeholder="Pick a Date and Time" class="form-control" />
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+					            </div>
+					        </div>
+					        <script type="text/javascript">
+					            $(function () {
+					                $('#datetimepicker1').datetimepicker();
+					            });
+					        </script>
+					    </div>
+						</div>
+						</div>
+						
+
+
+				      	<div class="radiodiv">
+				        <label for="#{label}">Pick a Category</label>
+				        </div>
+				        <!-- <div class="checkbox">
+    						<label>
+   								<input type="checkbox" value="">
+   									<span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+   										Option one
+   							</label>
+						</div> -->
+
+						<div class="col-md-8">
+							<div class="col-md-8">
+
+							    <div class="funkyradio">
+							        <div class="funkyradio-primary">
+							            <input type="radio" name="radio" id="radio1" />
+							            <label for="radio1">Food</label>
+							        </div>
+							        <div class="funkyradio-success">
+							            <input type="radio" name="radio" id="radio3" />
+							            <label for="radio3">Rent</label>
+							        </div>
+							        <div class="funkyradio-danger">
+							            <input type="radio" name="radio" id="radio4" />
+							            <label for="radio4">Groceries</label>
+							        </div>
+							        <div class="funkyradio-warning">
+							            <input type="radio" name="radio" id="radio5" />
+							            <label for="radio5">Entertainment</label>
+							        </div>
+							        <div class="funkyradio-info">
+							            <input type="radio" name="radio" id="radio2"/>
+							            <label for="radio2">Electricity</label>
+							        </div>
+							        <div class="funkyradio-default">
+							            <input type="radio" name="radio" id="radio6" checked/>
+							            <label for="radio6">Others</label>
+							        </div>
+							        <div class="addbutton">
+										<button type="button" class="btn btn-success btn-lg">Add</button>
+									</div>
+							    </div>
+							</div>
+						</div>
+
+				    </form>
+				  <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <a href = "index.html" class = "back">&larr; Home </a>
+        </div>
+    </div>
+</div>
+
+</div>
+</div></div></div>
+</body>
+</html>
