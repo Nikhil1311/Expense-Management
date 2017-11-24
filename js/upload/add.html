@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .back{
+        font-size:16px;
+        }
+
+        .back:hover{
+        text-decoration: none;
+        color: white;
+        }
+    </style>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'> 
+    <link href="css/bootstrap2.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/styleAdd.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>	
+  <!--   <script type="text/javascript">
+ 
+        $(function () {
+            $('#upload').click(function () {
+                alert($('input[type=file]').val());
+                return false;
+ 
+            });
+        });
+ 
+
+    </script> -->
+	<script>
+		function checker()
+		{
+			var categories = ['', 'food', 'utilities', 'rent', 'groceries', 'entertainment', 'others'];
+			for(i = 1;i<7;i++){
+				if(document.getElementById('radio' + i).checked)
+				{
+					document.getElementById('finalCategory').value = categories[i];
+					document.getElementById('form1').submit();	
+				}
+			}
+		}
+
+		function upload_image()
+		{
+			var file = document.getElementById("fileToUpload");
+			var filename = file.files[0];
+
+			form = new FormData();
+			form.append("name", "user")
+			form.append("image", filename)
+			console.log("hi1")
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = get_image_name;
+			xhr.open("POST", "upload.php", true);
+			xhr.send(form);
+		}
+
+		function get_image_name()
+		{
+			if(xhr.readyState==4 && xhr.status==200)
+			{
+				image_name = xhr.responseText;
+				console.log("hi")
+				console.log(image_name);
+				xhr1 = new XMLHttpRequest();
+				xhr1.onreadystatechange = update_amount;
+				xhr1.open("GET", "getimage.php?img="+image_name, true)
+				xhr1.send();
+			}
+		}
+
+		function update_amount()
+		{
+			if(xhr1.readyState==4 && xhr1.status==200)
+			{
+				 console.log(xhr.responseText);
+			}
+		}
+
+		function createGroup()
+		{
+			document.getElementById('form2').submit();
+		}
+	</script>
+</head>
+<body class="">
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Update Personal Expense</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Create Group</button>
+
+
+
+<div id="myModal" class="modal fade">
+<div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+      <div class="modal-header">
+<div class="loginColumns animated fadeInDown">
+    <div class="row">
+
+        <div class="col-md-12">
+            <center><p class = "logintext2">Add Expense</p></center>
+        </div>
+		<html lang="en">
+
+  
+        <div class="col-md-12">
+            <div class="wrappingbox">
+				    <form method = "post" action = "add_to_db.php" id = "form1">
+				     
+					  <div class="input-container">
+				        <input type="#{type}" id="#{label}" name = "description" required="required"/>
+				        <label for="#{label}"> Description</label>
+				        <div class="bar"></div>
+				      </div>
+
+				       <!--  <div class="radiodiv">
+				        <label for="#{label}">Upload the Image</label>
+				        </div>	 -->			      
+				      
+
+				      <div>
+				        <!-- <form action="upload.php" method="post" enctype="multipart/form-data"> -->
+						    <input type="file" class="btn btn-default btn" name="fileToUpload" id="fileToUpload">
+						    <div class="addbutton">
+								<button type="submit" value="Upload Image" id="upload" name="submit" class="btn btn-success btn" onclick= "upload_image()">Upload the bill</button>
+							</div>
+						<!-- </form> -->
+				      </div>
+				      	
+				      
+
+				      <div class="input-container">
+				        <input type="#{type}" id="#{label}" name = "amount" required="required"/>
+				        <label for="#{label}">Amount</label>
+				        <div class="bar"></div>
+				      </div>
+				       
+				        <div class="datedivsib">
+			            <div class="container">
+					    <div class="row">
+					        <div class='col-sm-4'>
+					            <div class="form-group">
+					                <div class='input-group date' id='datetimepicker1'>
+					                    <input type='text' placeholder="Pick a Date and Time" class="form-control" name = "date" id = "date" />
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+					            </div>
+					        </div>
+					        <script type="text/javascript">
+					            $(function () {
+					                $('#datetimepicker1').datetimepicker();
+					            });
+					        </script>
+					    </div>
+						</div>
+						</div>
+						
+
+
+				      	<div class="radiodiv">
+				        <label for="#{label}">Pick a Category</label>
+				        </div>
+
+						<div class="col-md-8">
+							<div class="col-md-8">
+
+							    <div class="funkyradio" name = "category">
+							        <div class="funkyradio-primary">
+							            <input type="radio" name="radio" id="radio1" />
+							            <label for="radio1">Food</label>
+							        </div>
+							        <div class="funkyradio-success">
+							            <input type="radio" name="radio" id="radio3" />
+							            <label for="radio3">Rent</label>
+							        </div>
+							        <div class="funkyradio-danger">
+							            <input type="radio" name="radio" id="radio4" />
+							            <label for="radio4">Groceries</label>
+							        </div>
+							        <div class="funkyradio-warning">
+							            <input type="radio" name="radio" id="radio5" />
+							            <label for="radio5">Entertainment</label>
+							        </div>
+							        <div class="funkyradio-info">
+							            <input type="radio" name="radio" id="radio2"/>
+							            <label for="radio2">Utilities</label>
+							        </div>
+							        <div class="funkyradio-default">
+							            <input type="radio" name="radio" id="radio6">
+							            <label for="radio6">Others</label>
+							        </div>
+							    </div>
+								
+							<input type = "hidden" id = "finalCategory" name = "finalCategory">
+							
+							<div class="addbutton">
+							<button type="button" class="btn btn-success btn-lg" onclick = "checker()">Add</button>
+							</div>
+							</div>
+						</div>
+						
+				    </form>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+</div>
+</div></div></div>
+
+
+
+
+
+<div id="myModal1" class="modal fade">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+<div class="loginColumns animated fadeInDown">
+    <div class="row">
+
+        <div class="col-md-12">
+            <center><p class = "logintext2">Create Group</p></center>
+        </div>
+        <div class="col-md-12">
+
+				    <form method = "post" action = "create_group.php" id = "form2">
+
+				  <h2>Enter Your Group Details</h2>
+				  
+					<div class="input-container">
+					  <input type="#{type}"  id="gname" name="group_name" required="required">
+						<label for="#{gname}">Group Name</label>
+						<div class="bar"></div>
+					</div>
+					<div class="input-container">
+				  
+					<textarea class="form-control" name = "email_list" rows="5" id="email" placeholder="Email ID's Of Group Members You Wish To Add, Separate Email ID's by a single comma" ></textarea>
+				
+					<input type = "hidden" id = "finalCategory" name = "finalCategory">
+					
+					<div class="addbutton">
+					<button type="button" class="btn btn-success btn-lg" onclick = "createGroup()">Create Group</button>
+					</div>
+				
+				    </form>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+</div>
+</div></div></div>
+
+
+
+
+
+
+</body>
+</html>

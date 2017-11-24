@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .back{
+        font-size:16px;
+        }
+
+        .back:hover{
+        text-decoration: none;
+        color: white;
+        }
+    </style>
+    <script>
+		function checking()
+		{
+			password = document.getElementById('password');
+			password1 = document.getElementById('password1');
+			email = document.getElementById('email');
+			fname = document.getElementById('fname');
+			lname = document.getElementById('lname');
+			if(email.value.length == 0 || fname.value.length == 0 || lname.value.length == 0|| password.value.length == 0 || password1.value.length == 0)
+			{alert('All fields are mandatory'); return false;}
+			else if((password.value != password1.value)) {alert('Passwords Do not Match, Please Reenter'); return false;}
+			else if(password.value.length < 6) {alert('Password should be atleast 6 character long, Please Reenter'); return false;}
+			else{
+				return true;
+			}
+		}
+</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'> 
+    <link href="css/bootstrap2.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/styleLogin.css" rel="stylesheet">
+
+</head>
+<body class="">
+
+<div class="loginColumns animated fadeInDown">
+    <div class="row">
+
+        <div class="col-md-12">
+            <p class = "logintext2">Sigup To Keep A Tab On Your Expenses</p>
+        </div>
+        <div class="col-md-12">
+            <div class="wrappingbox">
+                <form method = "post" action = "register.php" id = "form1" onsubmit = "return checking()">
+						<div class="form-group">
+                            <input id="email" name = "email" type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input id="fname" name = "fname" type="text" class="form-control" placeholder="First Name" required>
+                        </div>
+						<div class="form-group">
+                            <input id="lname" name = "lname" type="text" class="form-control" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input id="password" name = "password" type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input id="password1" name = "password1" type="password" class="form-control" placeholder="Confirm Password" required>
+                        </div>
+                        <button id = "sub" type="submit" class="btn btn-primary btn-block"> Register</button>
+                        <br>
+                        <p class="text-muted text-center"><small>Already have an account?</small>
+                        <a class="btn btn-sm btn-white btn-block" href="login.html" style = "color:#676a6c;font-size:13px">Login</a>
+                        </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <a href = "index.html" class = "back">&larr; Home </a>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
